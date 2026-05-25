@@ -1,12 +1,4 @@
-/* =========================================================
-   NORTHWIND DATABASE BACKUP & DISASTER RECOVERY PLAN
-   Dosya: 01_altyapi_ve_tablolar.sql
-   ========================================================= */
-
--- =========================================================
 -- 1. BACKUP ŞEMASI OLUŞTURMA
--- =========================================================
-
 CREATE SCHEMA IF NOT EXISTS backup_dr;
 
 DROP TABLE IF EXISTS backup_dr.backup_history CASCADE;
@@ -16,9 +8,7 @@ DROP TABLE IF EXISTS backup_dr.orders_full_backup CASCADE;
 DROP TABLE IF EXISTS backup_dr.order_details_full_backup CASCADE;
 DROP TABLE IF EXISTS backup_dr.incremental_change_log CASCADE;
 
--- =========================================================
 -- 2. YEDEKLEME GEÇMİŞİ TABLOSU
--- =========================================================
 
 CREATE TABLE backup_dr.backup_history (
     backup_id SERIAL PRIMARY KEY,
@@ -28,9 +18,7 @@ CREATE TABLE backup_dr.backup_history (
     status VARCHAR(20) DEFAULT 'SUCCESS'
 );
 
--- =========================================================
 -- 3. RECOVERY POINT TABLOSU
--- =========================================================
 
 CREATE TABLE backup_dr.recovery_points (
     point_id SERIAL PRIMARY KEY,
@@ -39,9 +27,7 @@ CREATE TABLE backup_dr.recovery_points (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- =========================================================
 -- 5. ARTIK / FARK YEDEKLEME İÇİN CHANGE LOG TABLOSU
--- =========================================================
 
 CREATE TABLE backup_dr.incremental_change_log (
     log_id SERIAL PRIMARY KEY,
@@ -53,9 +39,7 @@ CREATE TABLE backup_dr.incremental_change_log (
     changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- =========================================================
 -- 9. YEDEKLEME ZAMANLAYICI TABLOSU
--- =========================================================
 
 DROP TABLE IF EXISTS backup_dr.backup_schedule;
 

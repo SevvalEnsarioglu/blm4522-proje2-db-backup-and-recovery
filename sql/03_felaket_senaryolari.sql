@@ -1,11 +1,4 @@
-/* =========================================================
-   NORTHWIND DATABASE BACKUP & DISASTER RECOVERY PLAN
-   Dosya: 03_felaket_senaryolari.sql
-   ========================================================= */
-
--- =========================================================
 -- 10. TEST VERİ DEĞİŞİKLİKLERİ
--- =========================================================
 
 UPDATE products
 SET unit_price = unit_price + 5
@@ -20,9 +13,7 @@ VALUES (
     'Product tablosunda değişen kayıtlar incremental_change_log tablosuna kaydedildi.'
 );
 
--- =========================================================
 -- 11. FELAKET SENARYOSU: YANLIŞLIKLA VERİ SİLME
--- =========================================================
 
 INSERT INTO backup_dr.recovery_points (
     point_name,
@@ -48,9 +39,7 @@ VALUES (
     '10248 numaralı sipariş yanlışlıkla silindi.'
 );
 
--- =========================================================
 -- 12. SİLİNEN ORDER VERİSİNİ TAM YEDEKTEN GERİ YÜKLEME
--- =========================================================
 
 INSERT INTO orders
 SELECT *
@@ -82,9 +71,7 @@ VALUES (
     '10248 numaralı sipariş ve detayları tam yedekten geri yüklendi.'
 );
 
--- =========================================================
 -- 13. POINT-IN-TIME RESTORE MANTIĞI
--- =========================================================
 
 DROP TABLE IF EXISTS backup_dr.products_pitr_demo;
 

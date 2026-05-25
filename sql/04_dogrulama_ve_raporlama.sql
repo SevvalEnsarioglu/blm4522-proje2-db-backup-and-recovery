@@ -1,11 +1,4 @@
-/* =========================================================
-   NORTHWIND DATABASE BACKUP & DISASTER RECOVERY PLAN
-   Dosya: 04_dogrulama_ve_raporlama.sql
-   ========================================================= */
-
--- =========================================================
 -- 14. TEST YEDEKLEME SENARYOLARI
--- =========================================================
 
 DROP TABLE IF EXISTS backup_dr.backup_validation_results;
 
@@ -66,9 +59,7 @@ SELECT
         ELSE 'CHECK REQUIRED'
     END;
 
--- =========================================================
 -- 15. DATABASE MIRRORING SİMÜLASYONU
--- =========================================================
 
 DROP SCHEMA IF EXISTS mirror_db CASCADE;
 
@@ -92,9 +83,7 @@ VALUES (
     'Products, Orders ve Order Details tabloları mirror_db şemasına kopyalandı.'
 );
 
--- =========================================================
 -- 16. RAPORLAMA SORGULARI
--- =========================================================
 
 SELECT *
 FROM backup_dr.backup_history

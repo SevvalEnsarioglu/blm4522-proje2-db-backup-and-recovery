@@ -1,11 +1,4 @@
-/* =========================================================
-   NORTHWIND DATABASE BACKUP & DISASTER RECOVERY PLAN
-   Dosya: 02_tam_ve_artik_yedekleme.sql
-   ========================================================= */
-
--- =========================================================
 -- 4. TAM YEDEKLEME TABLOLARI
--- =========================================================
 
 CREATE TABLE backup_dr.products_full_backup AS
 SELECT * FROM products;
@@ -34,10 +27,7 @@ VALUES (
     'Felaket senaryosu öncesi güvenli kurtarma noktası oluşturuldu.'
 );
 
-
--- =========================================================
 -- 6. PRODUCTS İÇİN LOG TRIGGER FUNCTION
--- =========================================================
 
 CREATE OR REPLACE FUNCTION backup_dr.log_products_changes()
 RETURNS TRIGGER AS $$
@@ -108,9 +98,7 @@ AFTER INSERT OR UPDATE OR DELETE ON products
 FOR EACH ROW
 EXECUTE FUNCTION backup_dr.log_products_changes();
 
--- =========================================================
 -- 7. ORDERS İÇİN LOG TRIGGER FUNCTION
--- =========================================================
 
 CREATE OR REPLACE FUNCTION backup_dr.log_orders_changes()
 RETURNS TRIGGER AS $$
@@ -169,9 +157,7 @@ AFTER INSERT OR UPDATE OR DELETE ON orders
 FOR EACH ROW
 EXECUTE FUNCTION backup_dr.log_orders_changes();
 
--- =========================================================
 -- 8. ORDER_DETAILS İÇİN LOG TRIGGER FUNCTION
--- =========================================================
 
 CREATE OR REPLACE FUNCTION backup_dr.log_order_details_changes()
 RETURNS TRIGGER AS $$
