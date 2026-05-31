@@ -1,7 +1,7 @@
 # BLM4522 — Proje 2: Veritabanı Yedekleme ve Felaketten Kurtarma
 
 > 22290742 - ŞEVVAL ENSARİOĞLU  
-> **Video Linki:** *(eklenecek)*
+> **Video Linki:** *https://youtu.be/CULaZNqfJI8?si=M72rQseGR3YZReDx*
 
 ---
 
